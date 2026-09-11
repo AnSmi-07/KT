@@ -122,5 +122,22 @@ class Database {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$review, $orderId]);
     }
+    public function addProduct($name, $description, $price, $image) {
+        $sql = "INSERT INTO " . $this->getTableName('products') . " (name, description, price, image) VALUES (?, ?, ?, ?)";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$name, $description, $price, $image]);
+    }
+    
+    public function updateProduct($id, $name, $description, $price, $image) {
+        $sql = "UPDATE " . $this->getTableName('products') . " SET name = ?, description = ?, price = ?, image = ? WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$name, $description, $price, $image, $id]);
+    }
+    
+    public function deleteProduct($id) {
+        $sql = "DELETE FROM " . $this->getTableName('products') . " WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$id]);
+    }
 }
 ?>

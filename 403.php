@@ -1,8 +1,7 @@
 <?php
-// 404.php
 require_once 'src/Base.php';
-header('HTTP/1.0 404 Not Found');
-$title = 'Страница не найдена';
-$content = '404';
+header('HTTP/1.0 403 Forbidden');
+$title = 'Доступ запрещён';
+$content = '403';
 require_once 'html/main.php';
 ?>

@@ -8,15 +8,27 @@
                 <form method="post">
                     <div class="mb-3">
                         <label>Логин</label>
-                        <input class="form-control" type="text" name="login" placeholder="Логин" required>
+                        <input class="form-control" type="text" name="login" placeholder="Логин (латиница и цифры, от 6 символов)"
+                               pattern="[A-Za-z0-9]{6,}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>ФИО</label>
+                        <input class="form-control" type="text" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Телефон</label>
+                        <input class="form-control" type="text" name="phone" placeholder="8(999)123-45-67"
+                               pattern="8\(\d{3}\)\d{3}-\d{2}-\d{2}" required>
                     </div>
                     <div class="mb-3">
                         <label>Пароль</label>
-                        <input class="form-control" type="password" name="password" placeholder="Пароль" required>
+                        <input class="form-control" type="password" name="password" placeholder="Пароль (от 8 символов)"
+                               minlength="8" required>
                     </div>
                     <div class="mb-3">
                         <label>Повторите пароль</label>
-                        <input class="form-control" type="password" name="confirm" placeholder="Повторите пароль" required>
+                        <input class="form-control" type="password" name="confirm" placeholder="Повторите пароль"
+                               minlength="8" required>
                     </div>
                     <div class="mb-3">
                         <label>Email</label>

@@ -1,4 +1,33 @@
-<h1 class="text-center">Мои заказы</h1>
+<h1 class="text-center my-5">Личный кабинет</h1>
+
+<div class="card mb-4">
+    <div class="card-header primary-color">
+        Профиль
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                <strong>Логин:</strong> <?= htmlspecialchars($auth_user['login']) ?>
+            </div>
+            <div class="col-md-3 mb-2">
+                <strong>ФИО:</strong> <?= htmlspecialchars($auth_user['fio']) ?>
+            </div>
+            <div class="col-md-3 mb-2">
+                <strong>Email:</strong> <?= htmlspecialchars($auth_user['email']) ?>
+            </div>
+            <div class="col-md-3 mb-2">
+                <strong>Телефон:</strong> <?= htmlspecialchars($auth_user['phone']) ?>
+            </div>
+            <div class="col-md-3 mb-2">
+                <strong>Дата регистрации:</strong>
+                <?= !empty($auth_user['created_at']) ? date('d.m.Y', strtotime($auth_user['created_at'])) : '—' ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="mb-3">Мои заказы</h2>
+
 <?php if (isset($_GET['success'])): ?>
     <div class="alert alert-success">Заказ оформлен!</div>
 <?php endif; ?>
@@ -10,7 +39,7 @@
             <div class="card-header primary-color">
                 Заказ №<?= $order['id'] ?> от <?= date('d.m.Y', strtotime($order['created_at'])) ?>
                 <span class="badge secondary-color float-end">
-                    <?php 
+                    <?php
                         $statusMap = ['new'=>'Новый', 'in_progress'=>'В процессе', 'completed'=>'Завершён'];
                         echo $statusMap[$order['status']];
                     ?>
