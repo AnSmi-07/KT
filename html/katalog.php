@@ -4,7 +4,7 @@
 <h1 class="text-center my-5">Каталог вязгрушинок</h1>
 <div class="row">
     <?php foreach ($products as $product): ?>
-        <div class="col-lg-4 mb-3">
+        <div class="col-lg-4 col-sm-2 mb-3">
             <div class="card">
                 <img src="img/<?= $product['image'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
                 <div class="card-body">

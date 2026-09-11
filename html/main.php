@@ -17,23 +17,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="katalog.php">Каталог</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="index.php"><i class="fa-solid fa-house" title="Главная"></i></a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="katalog.php"><i class="fa-solid fa-book" title="Каталог"></i></a></li>
                 <?php
                     $cart_count = 0;
                     if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                         foreach ($_SESSION['cart'] as $q) $cart_count += $q;
                     }
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><?= $cart_count > 0 ? ' (' . $cart_count . ')' : '' ?></a>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping" title="Корзина"></i><?= $cart_count > 0 ? ' (' . $cart_count . ')' : '' ?></a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="zakazs.php"><i class="fa-solid fa-user"></i></a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="zakazs.php"><i class="fa-solid fa-user" title="Личный кабинет"></i></a></li>
                 <?php if ($auth_user && $auth_user['role'] == 1): ?>
-                    <li class="nav-item"><a class="nav-link" href="administration.php">Админ-панель</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="administration.php"><i class="fa-brands fa-web-awesome" title="Панель-администратора"></i></a></li>
                 <?php endif; ?>
                 <?php if ($auth_user): ?>
-                    <li class="nav-item"><a class="nav-link text-danger" href="logout.php">Выйти (<?php echo htmlspecialchars($auth_user['login']); ?>)</a></li>
+                    <li class="nav-item ml-2"><a class="nav-link text-danger" href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket" title="Выход"></i> (<?php echo htmlspecialchars($auth_user['login']); ?>)</a></li>
                 <?php endif; ?>
             </ul>
         </div>
