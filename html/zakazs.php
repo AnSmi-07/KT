@@ -46,14 +46,19 @@
                 </span>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="img/<?= $order['image'] ?>" class="img-fluid" alt="<?= $order['product_name'] ?>">
+            <?php foreach ($order['items'] as $it): ?>
+                <div class="d-flex align-items-center mb-2">
+                    <div style="width: 50px; flex-shrink: 0;">
+                        <img src="img/<?= htmlspecialchars($it['image']) ?>" class="img-fluid" alt="">
                     </div>
-                    <div class="col-md-10">
-                        <p><strong>Товар:</strong> <?= htmlspecialchars($order['product_name']) ?></p>
-                        <p><strong>Дата получения:</strong> <?= date('d.m.Y', strtotime($order['order_date'])) ?></p>
-                        <?php if (!empty($order['review'])): ?>
+                    <div class="ms-3">
+                        <?= htmlspecialchars($it['product_name']) ?> × <?= $it['quantity'] ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <p class="mt-3"><strong>Дата получения:</strong> <?= date('d.m.Y', strtotime($order['order_date'])) ?></p>
+
+            <?php if (!empty($order['review'])): ?>
                             <div class="alert alert-secondary">
                                 <strong>Ваш отзыв:</strong> <?= nl2br(htmlspecialchars($order['review'])) ?>
                             </div>
@@ -64,11 +69,11 @@
                                     <label class="form-label">Оставить отзыв</label>
                                     <textarea name="review_text" rows="2" class="form-control" required placeholder="Поделитесь впечатлениями..."></textarea>
                                 </div>
-                                <button type="submit" name="submit_review" class="btn btn-primary btn-sm">Отправить отзыв</button>
+                                <button type="submit" name="submit_review" class="btn accent btn-sm">Отправить отзыв</button>
                             </form>
-                        <?php else: ?>
-                            <p class="text-muted small">Отзыв можно оставить после завершения заказа.</p>
-                        <?php endif; ?>
+                            <?php elseif ($order['status'] !== 'cancelled'): ?>
+                                <p class="text-muted small">Отзыв можно оставить после завершения заказа.</p>
+                            <?php endif; ?>
                     </div>
                 </div>
             </div>

@@ -82,30 +82,73 @@ class Database {
         return $stmt;
     }
 
-    // ---- Методы для товаров и заказов ----
+    // ---- Товары ----
     public function getProductById($id) {
         return $this->getRowById('products', $id);
     }
 
-    public function createOrder($userId, $productId, $orderDate) {
-        $sql = "INSERT INTO " . $this->getTableName('orders') . " (user_id, product_id, order_date) VALUES (?, ?, ?)";
+    public function addProduct($name, $description, $price, $image) {
+        $sql = "INSERT INTO " . $this->getTableName('products') . " (name, description, price, image) VALUES (?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$userId, $productId, $orderDate]);
+        return $stmt->execute([$name, $description, $price, $image]);
+    }
+
+    public function updateProduct($id, $name, $description, $price, $image) {
+        $sql = "UPDATE " . $this->getTableName('products') . " SET name = ?, description = ?, price = ?, image = ? WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$name, $description, $price, $image, $id]);
+    }
+
+    public function deleteProduct($id) {
+        $sql = "DELETE FROM " . $this->getTableName('products') . " WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([$id]);
+    }
+
+    // ---- Заказы ----
+    public function createOrderWithItems($userId, $orderDate, $items) {
+        try {
+            $this->pdo->beginTransaction();
+
+            $sql = "INSERT INTO " . $this->getTableName('orders') . " (user_id, order_date) VALUES (?, ?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$userId, $orderDate]);
+            $orderId = $this->pdo->lastInsertId();
+
+            $sql = "INSERT INTO " . $this->getTableName('order_items') . " (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
+            $stmt = $this->pdo->prepare($sql);
+            foreach ($items as $item) {
+                $stmt->execute([$orderId, $item['product_id'], $item['quantity'], $item['price']]);
+            }
+
+            $this->pdo->commit();
+            return $orderId;
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            return false;
+        }
+    }
+
+    public function getOrderItems($orderId) {
+        $sql = "SELECT oi.quantity, oi.price, p.id as product_id, p.name as product_name, p.image
+                FROM " . $this->getTableName('order_items') . " oi
+                JOIN " . $this->getTableName('products') . " p ON oi.product_id = p.id
+                WHERE oi.order_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$orderId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getUserOrders($userId) {
-        $sql = "SELECT o.*, p.name as product_name, p.image, p.price FROM " . $this->getTableName('orders') . " o
-                JOIN " . $this->getTableName('products') . " p ON o.product_id = p.id
-                WHERE o.user_id = ? ORDER BY o.created_at DESC";
+        $sql = "SELECT * FROM " . $this->getTableName('orders') . " WHERE user_id = ? ORDER BY created_at DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getAllOrders() {
-        $sql = "SELECT o.*, u.login, p.name as product_name, p.image FROM " . $this->getTableName('orders') . " o
+        $sql = "SELECT o.*, u.login FROM " . $this->getTableName('orders') . " o
                 JOIN " . $this->getTableName('users') . " u ON o.user_id = u.id
-                JOIN " . $this->getTableName('products') . " p ON o.product_id = p.id
                 ORDER BY o.created_at DESC";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -121,23 +164,6 @@ class Database {
         $sql = "UPDATE " . $this->getTableName('orders') . " SET review = ?, review_date = NOW() WHERE id = ? AND status = 'completed'";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$review, $orderId]);
-    }
-    public function addProduct($name, $description, $price, $image) {
-        $sql = "INSERT INTO " . $this->getTableName('products') . " (name, description, price, image) VALUES (?, ?, ?, ?)";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$name, $description, $price, $image]);
-    }
-    
-    public function updateProduct($id, $name, $description, $price, $image) {
-        $sql = "UPDATE " . $this->getTableName('products') . " SET name = ?, description = ?, price = ?, image = ? WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$name, $description, $price, $image, $id]);
-    }
-    
-    public function deleteProduct($id) {
-        $sql = "DELETE FROM " . $this->getTableName('products') . " WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$id]);
     }
 }
 ?>

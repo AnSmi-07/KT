@@ -23,25 +23,37 @@
                 <tr>
                     <td><?= $ord['id'] ?></td>
                     <td><?= htmlspecialchars($ord['login']) ?></td>
-                    <td><?= htmlspecialchars($ord['product_name']) ?></td>
+                    <td>
+                        <?php foreach ($ord['items'] as $it): ?>
+                            <div><?= htmlspecialchars($it['product_name']) ?> × <?= $it['quantity'] ?></div>
+                        <?php endforeach; ?>
+                    </td>                    
                     <td><?= date('d.m.Y', strtotime($ord['order_date'])) ?></td>
                     <td>
                         <?php
-                            $statusMap = ['new'=>'Новый', 'in_progress'=>'В процессе', 'completed'=>'Завершён'];
+                            $statusMap = ['new'=>'Новый', 'in_progress'=>'В процессе', 'completed'=>'Завершён', 'cancelled'=>'Отменён'];
                             echo $statusMap[$ord['status']];
                         ?>
                     </td>
                     <td><?= !empty($ord['review']) ? nl2br(htmlspecialchars($ord['review'])) : '—' ?></td>
                     <td>
-                        <form method="post">
-                            <input type="hidden" name="order_id" value="<?= $ord['id'] ?>">
-                            <select name="status" class="form-select form-select-sm">
-                                <option value="new" <?= $ord['status']=='new' ? 'selected' : '' ?>>Новый</option>
-                                <option value="in_progress" <?= $ord['status']=='in_progress' ? 'selected' : '' ?>>В процессе</option>
-                                <option value="completed" <?= $ord['status']=='completed' ? 'selected' : '' ?>>Завершён</option>
-                            </select>
-                            <button type="submit" name="update_status" class="btn accent btn-sm mt-1">Обновить</button>
-                        </form>
+                        <?php if ($ord['status'] === 'cancelled'): ?>
+                            <span class="text-muted">Отменён</span>
+                        <?php else: ?>
+                            <form method="post" class="mb-1">
+                                <input type="hidden" name="order_id" value="<?= $ord['id'] ?>">
+                                <select name="status" class="form-select form-select-sm">
+                                    <option value="new" <?= $ord['status']=='new' ? 'selected' : '' ?>>Новый</option>
+                                    <option value="in_progress" <?= $ord['status']=='in_progress' ? 'selected' : '' ?>>В процессе</option>
+                                    <option value="completed" <?= $ord['status']=='completed' ? 'selected' : '' ?>>Завершён</option>
+                                </select>
+                                <button type="submit" name="update_status" class="btn accent btn-sm mt-1">Обновить</button>
+                            </form>
+                            <form method="post" onsubmit="return confirm('Отменить заказ №<?= $ord['id'] ?>?');">
+                                <input type="hidden" name="order_id" value="<?= $ord['id'] ?>">
+                                <button type="submit" name="cancel_order" class="btn btn-danger btn-sm">Отменить</button>
+                            </form>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

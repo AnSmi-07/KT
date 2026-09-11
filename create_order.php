@@ -7,11 +7,31 @@ if (!$auth_user) {
 $title = 'Оформление заказа';
 $content = 'create_order';
 
-$product_id = isset($request->id) ? (int)$request->id : 0;
-$product = $db->getProductById($product_id);
+if (empty($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+    redirect('cart.php');
+}
 
-if (!$product) {
-    redirect('katalog.php');
+// Собираем позиции
+$items = array();
+$total = 0;
+foreach ($_SESSION['cart'] as $pid => $qty) {
+    $product = $db->getProductById($pid);
+    if ($product) {
+        $subtotal = $product['price'] * $qty;
+        $total += $subtotal;
+        $items[] = array(
+            'product_id' => $pid,
+            'quantity'   => $qty,
+            'price'      => $product['price'],
+            'name'       => $product['name'],
+            'image'      => $product['image'],
+            'subtotal'   => $subtotal
+        );
+    }
+}
+
+if (empty($items)) {
+    redirect('cart.php');
 }
 
 $message = '';
@@ -20,12 +40,13 @@ if (isset($request->submit_order)) {
     $order_date = $request->order_date;
 
     if (empty($order_date)) {
-        $message = '<p class="error-message">Выберите дату получения.</p>';
+        $message = '<p class="text-danger">Выберите дату получения.</p>';
     } else {
-        if ($db->createOrder($auth_user['id'], $product_id, $order_date)) {
+        if ($db->createOrderWithItems($auth_user['id'], $order_date, $items)) {
+            $_SESSION['cart'] = array();
             redirect('zakazs.php?success=1');
         } else {
-            $message = '<p class="error-message">Ошибка при создании заказа. Попробуйте снова.</p>';
+            $message = '<p class="text-danger">Ошибка при создании заказа. Попробуйте снова.</p>';
         }
     }
 }

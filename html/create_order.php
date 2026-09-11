@@ -1,30 +1,43 @@
-<h1 class="text-center">Оформление заказа</h1>
+<h1 class="text-center my-5">Оформление заказа</h1>
 
 <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-lg-7 mb-4">
         <div class="card">
+            <div class="card-header primary-color">Товары в заказе</div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="img/<?= $product['image'] ?>" class="img-fluid" alt="<?= $product['name'] ?>">
+                <?php foreach ($items as $item): ?>
+                    <div class="d-flex align-items-center mb-3 border-bottom pb-3">
+                        <div style="width: 60px; flex-shrink: 0;">
+                            <img src="img/<?= htmlspecialchars($item['image']) ?>" class="img-fluid" alt="">
+                        </div>
+                        <div class="ms-3 flex-grow-1">
+                            <div><strong><?= htmlspecialchars($item['name']) ?></strong></div>
+                            <div class="text-muted small"><?= $item['quantity'] ?> × <?= number_format($item['price'], 0, '', ' ') ?> ₽</div>
+                        </div>
+                        <div class="text-end"><?= number_format($item['subtotal'], 0, '', ' ') ?> ₽</div>
                     </div>
-                    <div class="col-md-8">
-                        <h5><?= htmlspecialchars($product['name']) ?></h5>
-                        <p><?= htmlspecialchars($product['description']) ?></p>
-                        <p><strong>Цена:</strong> <?= number_format($product['price'], 0, '', ' ') ?> ₽</p>
-                    </div>
+                <?php endforeach; ?>
+                <div class="d-flex justify-content-between">
+                    <strong>Итого:</strong>
+                    <strong><?= number_format($total, 0, '', ' ') ?> ₽</strong>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header primary-color">Дата получения</div>
+            <div class="card-body">
                 <?= $message ?>
-
                 <form method="post">
                     <div class="mb-3">
                         <label for="order_date" class="form-label">Дата получения</label>
-                        <input type="date" class="form-control" id="order_date" name="order_date" 
+                        <input type="date" class="form-control" id="order_date" name="order_date"
                                min="<?= date('Y-m-d', strtotime('+1 day')) ?>" required>
                     </div>
-                    <button type="submit" name="submit_order" class="btn accent">Подтвердить заказ</button>
-                    <a href="katalog.php" class="btn btn-secondary">Отмена</a>
+                    <button type="submit" name="submit_order" class="btn accent w-100">Подтвердить заказ</button>
+                    <a href="cart.php" class="btn secondary-color w-100 mt-2">Вернуться в корзину</a>
                 </form>
             </div>
         </div>

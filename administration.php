@@ -16,6 +16,12 @@ if (isset($request->update_status) && isset($request->order_id) && isset($reques
     redirect('administration.php#orders');
 }
 
+// Отмена заказа
+if (isset($request->cancel_order) && isset($request->order_id)) {
+    $db->updateOrderStatus((int)$request->order_id, 'cancelled');
+    redirect('administration.php#orders');
+}
+
 // Добавление товара
 if (isset($request->add_product)) {
     $name = trim($request->name);
@@ -53,6 +59,10 @@ if (isset($request->delete_product)) {
 }
 
 $orders = $db->getAllOrders();
+foreach ($orders as &$o) {
+    $o['items'] = $db->getOrderItems($o['id']);
+}
+unset($o);
 $products = $db->getRows('products', '', array(), 'name');
 
 $editProduct = null;

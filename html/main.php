@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg primary-color">
     <div class="container">
-        <a class="navbar-brand" href="index.php">ВЯЗГРУШИНКИ</a>
+        <a class="navbar-brand" href="index.php">ВЯЗГРУШка</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +19,16 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.php">Главная</a></li>
                 <li class="nav-item"><a class="nav-link" href="katalog.php">Каталог</a></li>
-                <li class="nav-item"><a class="nav-link" href="zakazs.php">Личный кабинет</a></li>
+                <?php
+                    $cart_count = 0;
+                    if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                        foreach ($_SESSION['cart'] as $q) $cart_count += $q;
+                    }
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><?= $cart_count > 0 ? ' (' . $cart_count . ')' : '' ?></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="zakazs.php"><i class="fa-solid fa-user"></i></a></li>
                 <?php if ($auth_user && $auth_user['role'] == 1): ?>
                     <li class="nav-item"><a class="nav-link" href="administration.php">Админ-панель</a></li>
                 <?php endif; ?>
@@ -34,7 +44,7 @@
     <?php require_once "html/$content.php"; ?>
 </main>
 
-<footer class="secondary-color text-center py-3 mt-5">
+<footer class="primary-color text-center py-3 mt-5">
     <p class="mb-0">©️ Все права защищены</p>
 </footer>
 

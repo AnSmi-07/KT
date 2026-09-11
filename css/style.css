@@ -1,18 +1,5 @@
 
-.accent{
-    background-color: #ffdcee ;
-}
-.primary-color{
-    background-color: #f1e1cc !important;
-}
-.secondary-color{
-    background-color: #c1c9bb !important;
-}
-.text-color{
-    /* color: #491c1c !important; */
-    /* color: #ff0000 !important; */
 
-}
 body {
     min-height: 100vh; /* Занимает всю высоту экрана */
     display: flex;
@@ -27,3 +14,24 @@ body {
   footer {
     margin-top: auto; /* Автоотступ сдвигает футер к низу */
   }
+.accent{
+    background-color: #ffdcee ;
+}
+.primary-color{
+    background-color: #f1e1cc !important;
+}
+.secondary-color{
+    background-color: #c1c9bb !important;
+}
+
+/* 2 вариант расцветки */
+
+/* .accent{
+  background-color: #ffdcee ;
+}
+.primary-color{
+  background-color: #ffd092 !important;
+}
+.secondary-color{
+  background-color: #c8e9af !important;
+} */

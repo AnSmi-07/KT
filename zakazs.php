@@ -18,5 +18,13 @@ if (isset($request->submit_review) && isset($request->order_id) && isset($reques
 }
 
 $orders = $db->getUserOrders($auth_user['id']);
+foreach ($orders as &$o) {
+    $o['items'] = $db->getOrderItems($o['id']);
+}
+unset($o);
+
+$orders = array_values(array_filter($orders, function($o) {
+    return $o['status'] !== 'cancelled';
+}));
 require_once 'html/main.php';
 ?>
