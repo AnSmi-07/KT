@@ -1,0 +1,29 @@
+
+.accent{
+    background-color: #ffdcee ;
+}
+.primary-color{
+    background-color: #f1e1cc !important;
+}
+.secondary-color{
+    background-color: #c1c9bb !important;
+}
+.text-color{
+    /* color: #491c1c !important; */
+    /* color: #ff0000 !important; */
+
+}
+body {
+    min-height: 100vh; /* Занимает всю высоту экрана */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  main {
+    flex: 1; /* Растягивает основной контент, «выталкивая» футер вниз */
+  }
+  
+  footer {
+    margin-top: auto; /* Автоотступ сдвигает футер к низу */
+  }
