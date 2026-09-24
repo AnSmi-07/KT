@@ -69,7 +69,7 @@
                                     <label class="form-label">Оставить отзыв</label>
                                     <textarea name="review_text" rows="2" class="form-control" required placeholder="Поделитесь впечатлениями..."></textarea>
                                 </div>
-                                <button type="submit" name="submit_review" class="btn accent btn-sm">Отправить отзыв</button>
+                                <button type="submit" name="submit_review" class="btn accent btn-sm text">Отправить отзыв</button>
                             </form>
                             <?php elseif ($order['status'] !== 'cancelled'): ?>
                                 <p class="text-muted small">Отзыв можно оставить после завершения заказа.</p>

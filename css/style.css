@@ -14,17 +14,38 @@ body {
   footer {
     margin-top: auto; /* Автоотступ сдвигает футер к низу */
   }
+body{
+  background-color: #FFF8F1;
+  color:#403B3A;
+}
+header{
+  background-color: #B9D9D0;
+}
 .accent{
-    background-color: #ffdcee ;
+    background-color: #ef91ba ;
 }
 .primary-color{
-    background-color: #f1e1cc !important;
+    background-color: #FCEDE5 !important;
 }
 .secondary-color{
-    background-color: #c1c9bb !important;
+    background-color: #E6DDF0 !important;
 }
-
-/* 2 вариант расцветки */
+footer{
+  background-color: #CDBBDF;
+}
+.text{
+  color: #FFF8F1;
+}
+/* Роль	Цвет	HEX	Где использовать
+Шапка	мятный	#B9D9D0	navbar, логотип, навигация
+Фон	молочный	#FFF8F1	вся область страницы
+Основной контент	очень светлый персиково-кремовый	#FCEDE5	карточки товаров
+Дополнительный контент	мягкий лавандово-голубой	#E6DDF0	бейджи, вторичные блоки, hover
+Футер	лаванда	#CDBBDF	footer
+Кнопки	коралловый	#F18478	«Добавить в корзину», основные CTA
+Текст	тёмный коричнево-графитовый	#403B3A	заголовки, названия, описания
+Вторичный текст	приглушённый серо-коричневый	#756D69	вспомогательная информация
+2 вариант расцветки */
 
 /* .accent{
   background-color: #ffdcee ;
@@ -34,4 +55,4 @@ body {
 }
 .secondary-color{
   background-color: #c8e9af !important;
-} */
+}

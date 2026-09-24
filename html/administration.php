@@ -47,11 +47,11 @@
                                     <option value="in_progress" <?= $ord['status']=='in_progress' ? 'selected' : '' ?>>В процессе</option>
                                     <option value="completed" <?= $ord['status']=='completed' ? 'selected' : '' ?>>Завершён</option>
                                 </select>
-                                <button type="submit" name="update_status" class="btn accent btn-sm mt-1">Обновить</button>
+                                <button type="submit" name="update_status" class="btn bg-success btn-sm mt-1 text">Обновить</button>
                             </form>
                             <form method="post" onsubmit="return confirm('Отменить заказ №<?= $ord['id'] ?>?');">
                                 <input type="hidden" name="order_id" value="<?= $ord['id'] ?>">
-                                <button type="submit" name="cancel_order" class="btn btn-danger btn-sm">Отменить</button>
+                                <button type="submit" name="cancel_order" class="btn btn-danger btn-sm text">Отменить</button>
                             </form>
                         <?php endif; ?>
                     </td>
@@ -101,10 +101,10 @@
             </div>
 
             <?php if ($editProduct): ?>
-                <button type="submit" name="update_product" class="btn accent">Сохранить изменения</button>
-                <a href="administration.php#products" class="btn btn-secondary">Отмена</a>
+                <button type="submit" name="update_product" class="btn bg-success text ">Сохранить изменения</button>
+                <a href="administration.php#products" class="btn btn-secondary text ">Отмена</a>
             <?php else: ?>
-                <button type="submit" name="add_product" class="btn accent">Добавить товар</button>
+                <button type="submit" name="add_product" class="btn accent text">Добавить товар</button>
             <?php endif; ?>
         </form>
     </div>
@@ -138,11 +138,11 @@
                 <td><?= htmlspecialchars($p['description']) ?></td>
                 <td><?= number_format($p['price'], 0, '', ' ') ?> ₽</td>
                 <td>
-                    <a href="administration.php?edit_id=<?= $p['id'] ?>#edit-form" class="btn accent btn-sm">Редактировать</a>
+                    <a href="administration.php?edit_id=<?= $p['id'] ?>#edit-form" class="btn bg-success btn-sm text">Редактировать</a>
                     <form method="post" class="d-inline"
                           onsubmit="return confirm('Удалить товар «<?= htmlspecialchars($p['name']) ?>»?');">
                         <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
-                        <button type="submit" name="delete_product" class="btn btn-danger btn-sm">Удалить</button>
+                        <button type="submit" name="delete_product" class="btn btn-danger btn-sm text">Удалить</button>
                     </form>
                 </td>
             </tr>

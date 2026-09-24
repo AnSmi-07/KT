@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body text-center py-5">
             <p class="mb-3">Корзина пуста</p>
-            <a href="katalog.php" class="btn accent">Перейти в каталог</a>
+            <a href="katalog.php" class="btn accent text">Перейти в каталог</a>
         </div>
     </div>
 <?php else: ?>
@@ -34,14 +34,14 @@
                     <td><?= number_format($item['price'], 0, '', ' ') ?> ₽</td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <a href="cart.php?action=dec&product_id=<?= $item['id'] ?>" class="btn accent btn-sm">−</a>
+                            <a href="cart.php?action=dec&product_id=<?= $item['id'] ?>" class="btn accent btn-sm text">−</a>
                             <span class="px-3 fw-bold"><?= $item['quantity'] ?></span>
-                            <a href="cart.php?action=inc&product_id=<?= $item['id'] ?>" class="btn accent btn-sm">+</a>
+                            <a href="cart.php?action=inc&product_id=<?= $item['id'] ?>" class="btn accent btn-sm text">+</a>
                         </div>
                     </td>
                     <td><?= number_format($item['subtotal'], 0, '', ' ') ?> ₽</td>
                     <td>
-                        <a href="cart.php?action=remove&product_id=<?= $item['id'] ?>" class="btn btn-danger btn-sm">Удалить</a>
+                        <a href="cart.php?action=remove&product_id=<?= $item['id'] ?>" class="btn btn-danger btn-sm text">Удалить</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -54,8 +54,8 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h4 class="mb-0">Итого: <?= number_format($cartTotal, 0, '', ' ') ?> ₽</h4>
                 <div>
-                    <a href="cart.php?action=clear" class="btn btn-secondary">Очистить</a>
-                    <a href="create_order.php" class="btn accent">Оформить заказ</a>
+                    <a href="cart.php?action=clear" class="btn btn-secondary text">Очистить</a>
+                    <a href="create_order.php" class="btn accent text">Оформить заказ</a>
                 </div>
             </div>
         </div>

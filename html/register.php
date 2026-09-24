@@ -34,7 +34,7 @@
                         <label>Email</label>
                         <input class="form-control" type="email" name="email" placeholder="Email" required>
                     </div>
-                    <button type="submit" name="submit" class="btn accent w-100">Зарегистрироваться</button>
+                    <button type="submit" name="submit" class="btn accent w-100 text">Зарегистрироваться</button>
                 </form>
                 <p class="mt-3 text-center">Уже есть аккаунт? <a href="login.php">Войти</a></p>
             </div>

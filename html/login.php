@@ -13,7 +13,7 @@
                         <label>Пароль</label>
                         <input class="form-control" type="password" name="password" placeholder="Пароль" required>
                     </div>
-                    <button type="submit" name="submit" class="btn accent w-100">Войти</button>
+                    <button type="submit" name="submit" class="btn accent w-100 text">Войти</button>
                 </form>
                 <p class="mt-3 text-center">Нет аккаунта? <a href="register.php">Зарегистрироваться</a></p>
             </div>

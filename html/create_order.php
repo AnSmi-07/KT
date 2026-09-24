@@ -36,8 +36,8 @@
                         <input type="date" class="form-control" id="order_date" name="order_date"
                                min="<?= date('Y-m-d', strtotime('+1 day')) ?>" required>
                     </div>
-                    <button type="submit" name="submit_order" class="btn accent w-100">Подтвердить заказ</button>
-                    <a href="cart.php" class="btn secondary-color w-100 mt-2">Вернуться в корзину</a>
+                    <button type="submit" name="submit_order" class="btn accent w-100 text">Подтвердить заказ</button>
+                    <a href="cart.php" class="btn secondary-color w-100 mt-2 text">Вернуться в корзину</a>
                 </form>
             </div>
         </div>

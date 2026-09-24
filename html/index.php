@@ -37,7 +37,7 @@
         <p class="col text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam asperiores est ipsam quo praesentium possimus pariatur et voluptate velit, fuga voluptatum laudantium quos ex! Maiores dolorum dolorem non at aliquid.</p>
         <p class="col text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque atque expedita sequi qui molestiae quisquam exercitationem officiis tempora harum explicabo ex cumque ab, fugiat incidunt sunt, ipsum asperiores odio molestias?</p>
     </div>
-    <a href="katalog.php" class="btn btn accent mt-5">Перейти в каталог</a>
+    <a href="katalog.php" class="btn btn accent mt-5 text">Перейти в каталог</a>
 </section>
 
 
