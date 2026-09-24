@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- #fff2e1 -->
 <nav class="navbar navbar-expand-lg primary-color">
     <div class="container">
         <a class="navbar-brand" href="index.php">ВЯЗГРУШка</a>
