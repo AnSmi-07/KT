@@ -1,12 +1,12 @@
-<h1 class="text-center my-5">Админ-панель</h1>
+<h1 class="text-center my-5 caveat">Админ-панель</h1>
 
-<h2 class="mt-5" id="orders">Заказы</h2>
+<h2 class="mt-5 caveat" id="orders" >Заказы</h2>
 
 <?php if (empty($orders)): ?>
     <p>Нет заказов</p>
 <?php else: ?>
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered ">
             <thead class="table secondary-color">
                 <tr>
                     <th>ID</th>
@@ -47,7 +47,7 @@
                                     <option value="in_progress" <?= $ord['status']=='in_progress' ? 'selected' : '' ?>>В процессе</option>
                                     <option value="completed" <?= $ord['status']=='completed' ? 'selected' : '' ?>>Завершён</option>
                                 </select>
-                                <button type="submit" name="update_status" class="btn bg-success btn-sm mt-1 text">Обновить</button>
+                                <button type="submit" name="update_status" class="btn bg-successg btn-sm mt-1 text">Обновить</button>
                             </form>
                             <form method="post" onsubmit="return confirm('Отменить заказ №<?= $ord['id'] ?>?');">
                                 <input type="hidden" name="order_id" value="<?= $ord['id'] ?>">
@@ -64,10 +64,10 @@
 
 <hr class="my-5">
 
-<h2 class="mb-3" id="products">Товары</h2>
+<h2 class="mb-3 caveat" id="products">Работа с товарами</h2>
 
 <div class="card mb-4" id="edit-form">
-    <div class="card-header primary-color">
+    <div class="card-header secondary-color">
         <?= $editProduct ? 'Редактирование товара №' . $editProduct['id'] : 'Добавить товар' ?>
     </div>
     <div class="card-body">
@@ -101,7 +101,7 @@
             </div>
 
             <?php if ($editProduct): ?>
-                <button type="submit" name="update_product" class="btn bg-success text ">Сохранить изменения</button>
+                <button type="submit" name="update_product" class="btn bg-successg text ">Сохранить изменения</button>
                 <a href="administration.php#products" class="btn btn-secondary text ">Отмена</a>
             <?php else: ?>
                 <button type="submit" name="add_product" class="btn accent text">Добавить товар</button>
@@ -109,10 +109,11 @@
         </form>
     </div>
 </div>
-
+<h2 class="mt-5 caveat" id="orders" >Список товаров</h2>
 <?php if (empty($products)): ?>
     <p>Нет товаров</p>
 <?php else: ?>
+    
     <div class="table-responsive">
     <table class="table table-bordered">
         <thead class="table secondary-color">
@@ -138,7 +139,7 @@
                 <td><?= htmlspecialchars($p['description']) ?></td>
                 <td><?= number_format($p['price'], 0, '', ' ') ?> ₽</td>
                 <td>
-                    <a href="administration.php?edit_id=<?= $p['id'] ?>#edit-form" class="btn bg-success btn-sm text">Редактировать</a>
+                    <a href="administration.php?edit_id=<?= $p['id'] ?>#edit-form" class="btn bg-successg btn-sm text">Редактировать</a>
                     <form method="post" class="d-inline"
                           onsubmit="return confirm('Удалить товар «<?= htmlspecialchars($p['name']) ?>»?');">
                         <input type="hidden" name="product_id" value="<?= $p['id'] ?>">

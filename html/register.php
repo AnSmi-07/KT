@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h1 class="text-center">Регистрация</h1>
+                <h1 class="text-center caveat">Регистрация</h1>
                 <?php if ($error) echo '<div class="alert alert-danger">'.$error.'</div>'; ?>
                 <?php if ($success) echo '<div class="alert alert-success">'.$success.'</div>'; ?>
                 <form method="post">

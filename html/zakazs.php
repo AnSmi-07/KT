@@ -1,10 +1,10 @@
-<h1 class="text-center my-5">Личный кабинет</h1>
+<h1 class="text-center my-5 caveat">Личный кабинет</h1>
 
 <div class="card mb-4">
     <div class="card-header primary-color">
         Профиль
     </div>
-    <div class="card-body">
+    <div class="card-body ">
         <div class="row">
             <div class="col-md-3 mb-2">
                 <strong>Логин:</strong> <?= htmlspecialchars($auth_user['login']) ?>
@@ -38,7 +38,7 @@
         <div class="card mb-3">
             <div class="card-header primary-color">
                 Заказ №<?= $order['id'] ?> от <?= date('d.m.Y', strtotime($order['created_at'])) ?>
-                <span class="badge secondary-color float-end">
+                <span class="badge secondary-color float-end text-dark">
                     <?php
                         $statusMap = ['new'=>'Новый', 'in_progress'=>'В процессе', 'completed'=>'Завершён'];
                         echo $statusMap[$order['status']];

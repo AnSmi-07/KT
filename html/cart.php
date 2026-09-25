@@ -1,4 +1,4 @@
-<h1 class="text-center my-5">Корзина</h1>
+<h1 class="text-center my-5 caveat">Корзина</h1>
 
 <?php if (empty($cartItems)): ?>
     <div class="card">
@@ -52,7 +52,7 @@
     <div class="card mt-4">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <h4 class="mb-0">Итого: <?= number_format($cartTotal, 0, '', ' ') ?> ₽</h4>
+                <h5 class="mb-0">Итого: <?= number_format($cartTotal, 0, '', ' ') ?> ₽</h5>
                 <div>
                     <a href="cart.php?action=clear" class="btn btn-secondary text">Очистить</a>
                     <a href="create_order.php" class="btn accent text">Оформить заказ</a>

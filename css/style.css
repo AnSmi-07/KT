@@ -18,11 +18,11 @@ body{
   background-color: #FFF8F1;
   color:#403B3A;
 }
-header{
+nav{
   background-color: #B9D9D0;
 }
 .accent{
-    background-color: #ef91ba ;
+    background-color: #b791ef ;
 }
 .primary-color{
     background-color: #FCEDE5 !important;
@@ -36,6 +36,9 @@ footer{
 .text{
   color: #FFF8F1;
 }
+table{
+  background-color: #ffffff;
+}
 /* Роль	Цвет	HEX	Где использовать
 Шапка	мятный	#B9D9D0	navbar, логотип, навигация
 Фон	молочный	#FFF8F1	вся область страницы
@@ -47,12 +50,54 @@ footer{
 Вторичный текст	приглушённый серо-коричневый	#756D69	вспомогательная информация
 2 вариант расцветки */
 
-/* .accent{
-  background-color: #ffdcee ;
+/* заголовки */
+.caveat {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  /* font-size: 1.5em; */
+  font-weight: 400;
+  font-style: normal;
 }
-.primary-color{
-  background-color: #ffd092 !important;
+/* текст и кнопки */
+
+.comfortaa{
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
-.secondary-color{
-  background-color: #c8e9af !important;
+.logo{
+  max-width: 80px;
+  max-height: 80px;
+}
+.btn-danger{
+  background-color: rgb(242, 80, 80);
+}
+.bg-successg{
+  background-color: rgb(98, 190, 129);
+}
+
+.small-card {
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.small-card img {
+  height: 180px;
+  object-fit: contain;
+}
+
+.small-card .card-body {
+  padding: 15px;
+}
+
+.small-card .card-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.small-card .card-text {
+  font-size: 14px;
 }

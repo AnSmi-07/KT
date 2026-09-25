@@ -1,4 +1,4 @@
-<h1 class="text-center my-5">Оформление заказа</h1>
+<h1 class="text-center my-5 caveat">Оформление заказа</h1>
 
 <div class="row">
     <div class="col-lg-7 mb-4">

@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h1 class="text-center">Вход</h1>
+                <h1 class="text-center caveat">Вход</h1>
                 <?php if ($error) echo '<div class="alert alert-danger">'.$error.'</div>'; ?>
                 <form method="post">
                     <div class="mb-3">
