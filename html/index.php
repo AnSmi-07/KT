@@ -55,7 +55,7 @@
     <div class="row justify-content-center g-1">
         <div class="col-lg-3 col-md-4 col-sm-8 mb-3">
             <div class="card small-card h-100">
-                <img src="img/logo.png" class="card-img-top" alt="Ручная работа">
+                <img src="img/arms-work.png" class="card-img-top" alt="Ручная работа">
                 <div class="card-body primary-color">
                     <h3 class="card-title caveat">Ручная работа</h3>
                     <p class="card-text">Каждая игрушка создана с вниманием к деталям и любовью к вязанию.</p>
@@ -64,7 +64,7 @@
         </div>
         <div class="col-lg-3 col-md-4 col-sm-8 mb-3">
             <div class="card small-card h-100">
-                <img src="img/logo.png" class="card-img-top" alt="Ручная работа">
+                <img src="img/love-details.png" class="card-img-top" alt="Ручная работа">
                 <div class="card-body primary-color">
                     <h3 class="card-title caveat">С любовью к деталям</h3>
                     <p class="card-text">Нежные цвета, уютные фактуры и милые персонажи для особенного настроения.</p>
@@ -73,7 +73,7 @@
         </div>
         <div class="col-lg-3 col-md-4 col-sm-8 mb-3">
             <div class="card small-card h-100">
-                <img src="img/logo.png" class="card-img-top" alt="Ручная работа">
+                <img src="img/gift.png" class="card-img-top" alt="Ручная работа">
                 <div class="card-body primary-color">
                     <h3 class="card-title caveat">Для себя и в подарок</h3>
                     <p class="card-text">Выбирайте игрушку для себя или подарите маленького вязаного друга близкому человеку.</p>

@@ -1,7 +1,7 @@
 <h1 class="text-center my-5 caveat">Личный кабинет</h1>
 
 <div class="card mb-4">
-    <div class="card-header primary-color">
+    <div class="card-header secondary-color">
         Профиль
     </div>
     <div class="card-body ">
@@ -36,7 +36,7 @@
 <?php else: ?>
     <?php foreach ($orders as $order): ?>
         <div class="card mb-3">
-            <div class="card-header primary-color">
+            <div class="card-header secondary-color">
                 Заказ №<?= $order['id'] ?> от <?= date('d.m.Y', strtotime($order['created_at'])) ?>
                 <span class="badge secondary-color float-end text-dark">
                     <?php
