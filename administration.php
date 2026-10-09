@@ -61,6 +61,10 @@ if (isset($request->delete_product)) {
 $orders = $db->getAllOrders();
 foreach ($orders as &$o) {
     $o['items'] = $db->getOrderItems($o['id']);
+    $o['total'] = 0;
+    foreach ($o['items'] as $it) {
+        $o['total'] += $it['quantity'] * $it['price'];
+    }
 }
 unset($o);
 $products = $db->getRows('products', '', array(), 'name');

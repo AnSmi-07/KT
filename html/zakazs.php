@@ -36,9 +36,9 @@
 <?php else: ?>
     <?php foreach ($orders as $order): ?>
         <div class="card mb-3">
-            <div class="card-header secondary-color">
-                Заказ №<?= $order['id'] ?> от <?= date('d.m.Y', strtotime($order['created_at'])) ?>
-                <span class="badge secondary-color float-end text-dark">
+            <div class="card-header secondary-color d-flex justify-content-between align-items-center">
+                <span>Заказ №<?= $order['id'] ?> от <?= date('d.m.Y', strtotime($order['created_at'])) ?></span>
+                <span class="badge secondary-color text-dark">
                     <?php
                         $statusMap = ['new'=>'Новый', 'in_progress'=>'В процессе', 'completed'=>'Завершён'];
                         echo $statusMap[$order['status']];
@@ -51,12 +51,17 @@
                     <div style="width: 50px; flex-shrink: 0;">
                         <img src="img/<?= htmlspecialchars($it['image']) ?>" class="img-fluid" alt="">
                     </div>
-                    <div class="ms-3">
+                    <div class="ms-3 flex-grow-1">
                         <?= htmlspecialchars($it['product_name']) ?> × <?= $it['quantity'] ?>
+                    </div>
+                    <div class="text-end">
+                        <?= number_format($it['quantity'] * $it['price'], 0, '', ' ') ?> ₽
                     </div>
                 </div>
             <?php endforeach; ?>
-            <p class="mt-3"><strong>Дата получения:</strong> <?= date('d.m.Y', strtotime($order['order_date'])) ?></p>
+            <p class="mt-3 mb-1"><strong>Дата получения:</strong> <?= date('d.m.Y', strtotime($order['order_date'])) ?></p>
+            <hr>
+            <p class="mb-3 text-end fs-5"><strong>Итого: <?= number_format($order['total'], 0, '', ' ') ?> ₽</strong></p>
 
             <?php if (!empty($order['review'])): ?>
                             <div class="alert alert-secondary">

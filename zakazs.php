@@ -20,6 +20,10 @@ if (isset($request->submit_review) && isset($request->order_id) && isset($reques
 $orders = $db->getUserOrders($auth_user['id']);
 foreach ($orders as &$o) {
     $o['items'] = $db->getOrderItems($o['id']);
+    $o['total'] = 0;
+    foreach ($o['items'] as $it) {
+        $o['total'] += $it['quantity'] * $it['price'];
+    }
 }
 unset($o);
 

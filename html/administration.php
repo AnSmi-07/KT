@@ -45,6 +45,7 @@
                     <th>Пользователь</th>
                     <th>Товар</th>
                     <th>Дата получения</th>
+                    <th>Сумма</th>
                     <th>Статус</th>
                     <th>Отзыв</th>
                     <th>Действие</th>
@@ -67,6 +68,7 @@
                         <?php endforeach; ?>
                     </td>
                     <td><?= date('d.m.Y', strtotime($ord['order_date'])) ?></td>
+                    <td><strong><?= number_format($ord['total'], 0, '', ' ') ?> ₽</strong></td>
                     <td><?= $statusMap[$ord['status']] ?></td>
                     <td><?= !empty($ord['review']) ? nl2br(htmlspecialchars($ord['review'])) : '—' ?></td>
                     <td>
@@ -256,7 +258,7 @@
         // Показываем строки текущей страницы
         pageRows.forEach(r => r.style.display = '');
 
-        // ★ Переставляем строки в DOM в нужном порядке
+        // Переставляем строки в DOM в нужном порядке
         pageRows.forEach(r => tbody.appendChild(r));
 
         renderPagination(totalPages);

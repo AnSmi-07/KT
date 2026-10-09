@@ -297,3 +297,25 @@ font-size: 14px;
   background-color: #a98dc7 !important;
   color: #403B3A !important;
 }
+/* ссылки в тексте */
+
+a {
+  color: #9467d6;
+  text-decoration: none;
+  transition: color .2s ease, text-decoration .2s ease;
+}
+
+a:hover {
+  color: #b791ef;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #7a4fc0;
+}
+
+a:focus-visible {
+  outline: 2px solid #B9D9D0;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
