@@ -2,27 +2,21 @@
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+        <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>git  -->
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/slide1.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block text-light">
-                <h2>ДОБРО ПОЖАЛОВАТЬ!</h2>
-            </div>
+            <img src="img/hero.png" class="d-block w-100" alt="...">
+
         </div>
         <div class="carousel-item">
-            <img src="img/slide2.png" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block text-light">
-                <h2>БОЛЬШОЙ ВЫБОР ИГРУШЕК!</h2>
-            </div>
+            <img src="img/hero2.png" class="d-block w-100" alt="...">
+
         </div>
-        <div class="carousel-item">
+        <!-- <div class="carousel-item">
             <img src="img/slide3.png" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block text-light">
-                <h2>ВЫБИРАЙ ЛЮБУЮ!</h2>
-            </div>
-        </div>
+
+        </div> -->
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
@@ -39,16 +33,6 @@
     </div>
     <a href="katalog.php" class="btn btn accent mt-5 text">Смотреть все игрушки</a>
 </section>
-
-<!-- Заголовок
-Почему «Вязгрушка»?
-Три карточки:
-🧶 Ручная работа
-Каждая игрушка создана с вниманием к деталям и любовью к вязанию.
-💗 С любовью к деталям
-Нежные цвета, уютные фактуры и милые персонажи для особенного настроения.
-🎁 Для себя и в подарок
-Выбирайте игрушку для себя или подарите маленького вязаного друга близкому человеку. -->
 
 <section class="container my-5 text-center">
     <h2 class="text-center caveat my-4">Почему "Вязгрушка"?</h2>

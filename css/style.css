@@ -1,104 +1,299 @@
-
-
 body {
-    min-height: 100vh; /* Занимает всю высоту экрана */
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
-  
-  main {
-    flex: 1; /* Растягивает основной контент, «выталкивая» футер вниз */
-  }
-  
-  footer {
-    margin-top: auto; /* Автоотступ сдвигает футер к низу */
-  }
-body{
-  background-color: #FFF8F1;
-  color:#403B3A;
+  min-height: 100vh; /* Занимает всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
-nav{
+
+main {
+  flex: 1; /* Растягивает основной контент, «выталкивая» футер вниз */
+}
+
+footer {
+  margin-top: auto; /* Автоотступ сдвигает футер к низу */
+}
+body{
+background-color: #FFF8F1;
+color:#403B3A;
+}
+.nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+nav {
   background-color: #B9D9D0;
 }
 .accent{
-    background-color: #b791ef ;
+  background-color: #b791ef ;
 }
 .primary-color{
-    background-color: #FCEDE5 !important;
+  background-color: #FCEDE5 !important;
 }
 .secondary-color{
-    background-color: #E6DDF0 !important;
+  background-color: #E6DDF0 !important;
 }
 footer{
-  background-color: #CDBBDF;
+background-color: #CDBBDF;
 }
 .text{
-  color: #FFF8F1;
+color: #FFF8F1;
 }
 table{
-  background-color: #ffffff;
+background-color: #ffffff;
 }
-/* Роль	Цвет	HEX	Где использовать
-Шапка	мятный	#B9D9D0	navbar, логотип, навигация
-Фон	молочный	#FFF8F1	вся область страницы
-Основной контент	очень светлый персиково-кремовый	#FCEDE5	карточки товаров
-Дополнительный контент	мягкий лавандово-голубой	#E6DDF0	бейджи, вторичные блоки, hover
-Футер	лаванда	#CDBBDF	footer
-Кнопки	коралловый	#F18478	«Добавить в корзину», основные CTA
-Текст	тёмный коричнево-графитовый	#403B3A	заголовки, названия, описания
-Вторичный текст	приглушённый серо-коричневый	#756D69	вспомогательная информация
-2 вариант расцветки */
+
 
 /* заголовки */
 .caveat {
-  font-family: "Caveat", cursive;
-  font-optical-sizing: auto;
-  /* font-size: 1.5em; */
-  font-weight: 400;
-  font-style: normal;
+font-family: "Caveat", cursive;
+font-optical-sizing: auto;
+/* font-size: 1.5em; */
+font-weight: 400;
+font-style: normal;
 }
 /* текст и кнопки */
 
 .comfortaa{
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+font-family: "Comfortaa", sans-serif;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
 }
 .logo{
-  max-width: 80px;
-  max-height: 80px;
+max-width: 80px;
+max-height: 80px;
 }
 .btn-danger{
-  background-color: rgb(242, 80, 80);
+background-color: rgb(242, 80, 80);
 }
 .bg-successg{
-  background-color: rgb(98, 190, 129);
+background-color: rgb(98, 190, 129);
 }
 
 .small-card {
-  max-width: 280px;
-  margin: 0 auto;
-  border-radius: 15px;
-  overflow: hidden;
+max-width: 280px;
+margin: 0 auto;
+border-radius: 15px;
+overflow: hidden;
 }
 
 .small-card img {
-  height: 180px;
-  object-fit: contain;
-  padding: 20px;
+height: 180px;
+object-fit: contain;
+padding: 20px;
 }
 
 .small-card .card-body {
-  padding: 15px;
+padding: 15px;
 }
 
 .small-card .card-title {
-  font-size: 28px;
-  margin-bottom: 8px;
+font-size: 28px;
+margin-bottom: 8px;
 }
 
 .small-card .card-text {
+font-size: 14px;
+}
+
+/* hover эффекты для кнопок - не прозрачные */
+
+.btn:hover,
+.btn:focus,
+.btn:focus-visible,
+.btn:active,
+.btn.active {
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
+.btn.accent:hover,
+.btn.accent:focus,
+.btn.accent:focus-visible {
+  background-color: #a678e5;
+  color: #FFF8F1;
+}
+
+.btn.accent:active,
+.btn.accent.active {
+  background-color: #9467d6;
+  color: #FFF8F1;
+}
+
+.bg-successg:hover,
+.bg-successg:focus,
+.bg-successg:focus-visible {
+  background-color: rgb(78, 170, 109);
+  color: #FFF8F1;
+}
+
+.bg-successg:active,
+.bg-successg.active {
+  background-color: rgb(60, 148, 90);
+  color: #FFF8F1;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:focus-visible {
+  background-color: rgb(220, 60, 60);
+  color: #FFF8F1;
+}
+
+.btn-danger:active,
+.btn-danger.active {
+  background-color: rgb(195, 45, 45);
+  color: #FFF8F1;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:focus-visible {
+  background-color: #bba4d3;
+  color: #403B3A;
+}
+
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #a98dc7;
+  color: #403B3A;
+}
+
+/* пагинация */
+
+.pagination {
+  margin-top: 1.5rem;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pagination .page-link {
+  color: #403B3A;
+  background-color: #ffffff;
+  border: 1px solid #E6DDF0;
+  border-radius: 8px !important;
+  min-width: 42px;
+  text-align: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.pagination .page-link:hover {
+  background-color: #FCEDE5;
+  border-color: #B9D9D0;
+  color: #403B3A;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #e6e6e6;
+  border-color: #65b39e;
+  color: #403B3A;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #f5f0ea;
+  border-color: #E6DDF0;
+  color: #b3aca7;
+  cursor: not-allowed;
+  opacity: .8;
+}
+
+#paginationInfo {
+  color: #756D69;
   font-size: 14px;
+}
+
+/* фильтры в админке */
+
+#filterStatus,
+#filterDate,
+#filterSearch {
+  border: 1px solid #E6DDF0;
+  background-color: #ffffff;
+  color: #403B3A;
+}
+
+#filterStatus:focus,
+#filterDate:focus,
+#filterSearch:focus {
+  border-color: #B9D9D0;
+  box-shadow: 0 0 0 0.2rem rgba(185, 217, 208, 0.45);
+  outline: none;
+}
+
+#filterSearch::placeholder {
+  color: #756D69;
+}
+
+
+
+/* бейдж статуса */
+
+.badge.secondary-color {
+  background-color: #E6DDF0 !important;
+  color: #403B3A !important;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+/* hover эффекты - принудительно перебиваем Bootstrap */
+
+.btn.accent:hover,
+.btn.accent:focus,
+.btn.accent:focus-visible {
+  background-color: #a678e5 !important;
+  color: #FFF8F1 !important;
+  opacity: 1 !important;
+}
+
+.btn.accent:active,
+.btn.accent.active {
+  background-color: #9467d6 !important;
+  color: #FFF8F1 !important;
+}
+
+.bg-successg:hover,
+.bg-successg:focus,
+.bg-successg:focus-visible {
+  background-color: rgb(78, 170, 109) !important;
+  color: #FFF8F1 !important;
+  opacity: 1 !important;
+}
+
+.bg-successg:active,
+.bg-successg.active {
+  background-color: rgb(60, 148, 90) !important;
+  color: #FFF8F1 !important;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:focus-visible {
+  background-color: rgb(220, 60, 60) !important;
+  color: #FFF8F1 !important;
+  opacity: 1 !important;
+}
+
+.btn-danger:active,
+.btn-danger.active {
+  background-color: rgb(195, 45, 45) !important;
+  color: #FFF8F1 !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:focus-visible {
+  background-color: #bba4d3 !important;
+  color: #403B3A !important;
+  opacity: 1 !important;
+}
+
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #a98dc7 !important;
+  color: #403B3A !important;
 }
