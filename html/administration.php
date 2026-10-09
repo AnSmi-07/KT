@@ -96,7 +96,7 @@
         </table>
     </div>
 
-    <!-- Пагинация -->
+    <!-- Пагинация заказов -->
     <nav>
         <ul class="pagination justify-content-center" id="ordersPagination"></ul>
     </nav>
@@ -156,7 +156,7 @@
     <p>Нет товаров</p>
 <?php else: ?>
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="productsTable">
             <thead class="table secondary-color">
                 <tr>
                     <th>ID</th>
@@ -167,9 +167,9 @@
                     <th>Действия</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="productsBody">
             <?php foreach ($products as $p): ?>
-                <tr>
+                <tr class="product-row">
                     <td><?= $p['id'] ?></td>
                     <td>
                         <?php if (!empty($p['image'])): ?>
@@ -192,10 +192,17 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Пагинация товаров -->
+    <nav>
+        <ul class="pagination justify-content-center" id="productsPagination"></ul>
+    </nav>
+    <p class="text-center text-muted" id="productsPaginationInfo"></p>
 <?php endif; ?>
 
 
 <script>
+/* ============ Пагинация заказов + фильтры ============ */
 (function () {
     const PER_PAGE = 5;
     const tbody = document.getElementById('ordersBody');
@@ -229,9 +236,6 @@
             return true;
         });
 
-        // Сортировка по ID заказа:
-        //   asc  → сначала старые (1, 2, 3, ...)
-        //   desc → сначала новые  (13, 12, 11, ...)
         const sortDir = filterDate.value;
         filteredRows.sort((a, b) => {
             const idA = parseInt(a.dataset.id, 10);
@@ -244,7 +248,6 @@
     }
 
     function render() {
-        // Скрываем все
         allRows.forEach(r => r.style.display = 'none');
 
         const total = filteredRows.length;
@@ -255,10 +258,7 @@
         const end = start + PER_PAGE;
         const pageRows = filteredRows.slice(start, end);
 
-        // Показываем строки текущей страницы
         pageRows.forEach(r => r.style.display = '');
-
-        // Переставляем строки в DOM в нужном порядке
         pageRows.forEach(r => tbody.appendChild(r));
 
         renderPagination(totalPages);
@@ -316,5 +316,78 @@
     });
 
     applyFilters();
+})();
+
+/* ============ Пагинация товаров ============ */
+(function () {
+    const PER_PAGE = 5;
+    const tbody = document.getElementById('productsBody');
+    if (!tbody) return;
+
+    const allRows = Array.from(tbody.querySelectorAll('.product-row'));
+    const paginationEl = document.getElementById('productsPagination');
+    const paginationInfo = document.getElementById('productsPaginationInfo');
+
+    if (!paginationEl || !paginationInfo) return;
+
+    let currentPage = 1;
+
+    function render() {
+        allRows.forEach(r => r.style.display = 'none');
+
+        const total = allRows.length;
+        const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const start = (currentPage - 1) * PER_PAGE;
+        const end = start + PER_PAGE;
+
+        allRows.slice(start, end).forEach(r => r.style.display = '');
+
+        renderPagination(totalPages);
+        paginationInfo.textContent = total === 0
+            ? 'Ничего не найдено'
+            : `Найдено ${total}`;
+    }
+
+    function renderPagination(totalPages) {
+        paginationEl.innerHTML = '';
+
+        const makeLi = (label, page, disabled = false, active = false) => {
+            const li = document.createElement('li');
+            li.className = 'page-item' + (disabled ? ' disabled' : '') + (active ? ' active' : '');
+            const a = document.createElement('a');
+            a.className = 'page-link';
+            a.href = '#products-list';
+            a.textContent = label;
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (disabled || active) return;
+                currentPage = page;
+                render();
+            });
+            li.appendChild(a);
+            return li;
+        };
+
+        paginationEl.appendChild(makeLi('«', currentPage - 1, currentPage === 1));
+
+        for (let i = 1; i <= totalPages; i++) {
+            if (totalPages > 7 && i !== 1 && i !== totalPages && Math.abs(i - currentPage) > 2) {
+                if (i === 2 || i === totalPages - 1) {
+                    const li = document.createElement('li');
+                    li.className = 'page-item disabled';
+                    li.innerHTML = '<span class="page-link">…</span>';
+                    paginationEl.appendChild(li);
+                }
+                continue;
+            }
+            paginationEl.appendChild(makeLi(i, i, false, i === currentPage));
+        }
+
+        paginationEl.appendChild(makeLi('»', currentPage + 1, currentPage === totalPages));
+    }
+
+    render();
 })();
 </script>
